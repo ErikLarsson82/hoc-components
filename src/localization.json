@@ -1,0 +1,20 @@
+{
+	"en": {
+		"title": "Fruit",
+		"optionA": "Radish",
+		"optionB": "Orange",
+		"optionC": "Cherry"
+	},
+	"de": {
+		"title": "Obst",
+		"optionA": "Rettich",
+		"optionB": "Orange",
+		"optionC": "Kirsche"
+	},
+	"sv": {
+		"title": "Frukt",
+		"optionA": "Rättika",
+		"optionB": "Apelsin",
+		"optionC": "Körsbär"
+	}
+}
