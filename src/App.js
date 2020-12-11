@@ -5,9 +5,29 @@ import data from './data.json'
 import localization from './localization.json'
 import { Button } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Dropdown from 'rc-dropdown';
+import Menu, { Item as MenuItem, Divider } from 'rc-menu';
+import 'rc-dropdown/assets/index.css';
 
 const value = e => e.target.value
-  
+
+function onSelect({ key }) {
+  console.log(`${key} selected`);
+}
+
+function onVisibleChange(visible) {
+  console.log(visible);
+}
+
+const menuCallback = () => (
+  <Menu onSelect={onSelect}>
+    <MenuItem disabled>disabled</MenuItem>
+    <MenuItem key="1">one</MenuItem>
+    <Divider />
+    <MenuItem key="2">two</MenuItem>
+  </Menu>
+);
+
 function App() {
   const [loading, setLoading] = useState(true)
   const [settings, setSettings] = useState(null)
@@ -30,6 +50,14 @@ function App() {
   return (
     <div>
       <p>{ isDirty ? 'im dirty' : 'im clean'}</p>
+      <Dropdown
+        trigger={['click']}
+        overlay={menuCallback}
+        animation="slide-up"
+        onVisibleChange={onVisibleChange}
+      >
+        <button style={{ width: 100 }}>Plugin dropdown</button>
+      </Dropdown>
       <Lang lang={lang} dis={modalOpen} />
       { loading
         ? <Loading />

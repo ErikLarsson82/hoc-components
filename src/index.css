@@ -16,6 +16,17 @@ select, p, div {
 	margin: 20px;
 }
 
+select {
+	background-color: #afb4ff;
+    padding: 4px 5px 4px 3px;
+    border: 0;
+    width: 120px;
+}
+
+select * {
+	padding: 5px;
+}
+
 .opt {
     width: 100px;
     margin-left: 20px;
