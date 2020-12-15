@@ -29,19 +29,9 @@ const MenuOverlay = () => (
 );
 
 function App() {
-  const [loading, setLoading] = useState(true)
-  const [settings, setSettings] = useState(null)
-  const [changes, setChanges] = useState(null)
+  const { loading, settings, changes, setChanges } = useDataStore()
   const [modal, setModal] = useState(false)
   const lang = useState("en")
-  
-  useEffect(() => {
-    setTimeout(() => {
-      setSettings(data)
-      setChanges(data)
-      setLoading(false)
-    }, 3000)
-  }, [])
 
   const isDirty = !equals(settings, changes)
   const isClean = !isDirty
@@ -58,7 +48,7 @@ function App() {
       >
         <button style={{ width: 100 }}>Plugin dropdown</button>
       </Dropdown>
-      <Lang lang={lang} dis={modalOpen} />
+      <LanguageDropdown lang={lang} dis={modalOpen} />
       { loading
         ? <Loading />
         : (
@@ -85,11 +75,27 @@ function App() {
   )
 }
 
+function useDataStore() {
+  const [loading, setLoading] = useState(true)
+  const [settings, setSettings] = useState(null)
+  const [changes, setChanges] = useState(null)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSettings(data)
+      setChanges(data)
+      setLoading(false)
+    }, 3000)
+  }, [])
+
+  return { loading, settings, changes, setChanges }
+}
+
 function Loading() {
   return <p>Loading...</p>
 }
 
-function Lang(props, b, c) {
+function LanguageDropdown(props, b, c) {
   const { dis } = props
   const [lang, setLang] = props.lang
 
