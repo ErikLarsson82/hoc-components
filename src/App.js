@@ -19,7 +19,7 @@ function onVisibleChange(visible) {
   console.log(visible);
 }
 
-const menuCallback = () => (
+const MenuOverlay = () => (
   <Menu onSelect={onSelect}>
     <MenuItem disabled>disabled</MenuItem>
     <MenuItem key="1">one</MenuItem>
@@ -52,7 +52,7 @@ function App() {
       <p>{ isDirty ? 'im dirty' : 'im clean'}</p>
       <Dropdown
         trigger={['click']}
-        overlay={menuCallback}
+        overlay={ MenuOverlay }
         animation="slide-up"
         onVisibleChange={onVisibleChange}
       >
